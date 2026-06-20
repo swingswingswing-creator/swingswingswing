@@ -697,6 +697,9 @@
   </div>
 </div>
 <script>
+ 
+<script>
+  // ─── CURSEUR ───
   const cur = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
   document.addEventListener('mousemove', e => {
@@ -707,6 +710,8 @@
     el.addEventListener('mouseenter', () => { cur.style.transform = 'translate(-50%,-50%) scale(2)'; ring.style.width = '56px'; ring.style.height = '56px'; });
     el.addEventListener('mouseleave', () => { cur.style.transform = 'translate(-50%,-50%) scale(1)'; ring.style.width = '36px'; ring.style.height = '36px'; });
   });
+
+  // ─── NAV SMOOTH SCROLL ───
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href').slice(1);
@@ -718,6 +723,8 @@
       }
     });
   });
+
+  // ─── NAV ACTIVE ───
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
   window.addEventListener('scroll', () => {
@@ -725,6 +732,8 @@
     sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) current = s.getAttribute('id'); });
     navLinks.forEach(a => { a.style.color = a.getAttribute('href') === '#' + current ? 'var(--or-clair)' : ''; });
   }, { passive: true });
+
+  // ─── APPARITION CARTES ───
   const observer = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.style.opacity = '1'; e.target.style.transform = 'translateY(0)'; } });
   }, { threshold: .1 });
@@ -733,106 +742,266 @@
     el.style.transition = 'opacity .6s ease, transform .6s ease';
     observer.observe(el);
   });
-  // ─── DONNÉES DÉTAILLÉES DES MEMBRES ───
-const membersData = {
-  evan: {
-    name: "Evan",
-    instrument: "Guitare",
-    role: "Guitare électrique & Guitare acoustique",
-    text: "Texte détaillé à compléter ici : parcours musical, anecdotes, influences, projets futurs...",
-    photos: [
-      // Remplacez chaque "" par votre chaîne base64 complète, ex: "data:image/jpeg;base64,/9j/4AAQ..."
-      "", 
-      "",
-      ""
-    ]
-  },
-  yasmine: {
-    name: "Yasmine Daoust",
-    instrument: "Clarinette",
-    role: "Clarinette & Saxophone alto & Clarinette alto",
-    text: `Yasmine est une clarinettiste exceptionnelle qui vient d’un petit village du Québec : Coteau-du-Lac. Elle y passe une enfance tranquille en tant qu’enfant unique, bercée par le calme de sa région. Très tôt, son parcours scolaire sort de l'ordinaire. Dotée d'une grande vivacité d'esprit, elle saute la première année du primaire pour poursuivre un cheminement accéléré. C'est à cette même époque que ses talents innés pour la musique sont remarqués par ses enseignants. Sa progression est si fulgurante qu’elle intègre l’harmonie de l’école alors qu’elle est deux ans plus jeune que tous les autres musiciens autour d'elle. À la recherche d'un environnement à la hauteur de son potentiel, elle arrive au Collège Bourget dès la 4e année du primaire, et elle y étudie avec passion depuis ce jour. Grâce à l'encadrement et aux opportunités offertes par cette institution de renommée, elle évolue à pas de géant, tant sur le plan académique que musical. Sa détermination porte ses fruits de manière spectaculaire : à l’âge de quatorze ans seulement, elle participe activement à la création du groupe Swing Swing Swing. Aujourd'hui, Yasmine occupe une place centrale et indispensable au sein de cette formation musicale. En plus d'être une musicienne clé sur scène, elle assume le rôle de présidente du groupe. Son leadership naturel et son dévouement en font le véritable pilier de Swing Swing Swing. Elle guide ses pairs avec autant de rigueur que de passion, prouvant que sa maturité dépasse largement son âge.`,
-    photos: ["", "", ""]
-  },
-  alexandre: {
-    name: "Alexandre Archambault",
-    instrument: "Piano",
-    role: "Piano & Trompette & Flûte Traversière",
-    text: "Texte détaillé à compléter ici...",
-    photos: ["", "", ""]
-  },
-  arman: {
-    name: "Arman Benito",
-    instrument: "Basse",
-    role: "Basse électrique & Batterie & Percussion Auxiliaire",
-    text: "Texte détaillé à compléter ici...",
-    photos: ["", "", ""]
-  },
-  felix: {
-    name: "Félix Archambault",
-    instrument: "Trompette",
-    role: "Trompette & Euphonium",
-    text: "Texte détaillé à compléter ici...",
-    photos: ["", "", ""]
-  },
-  samuel: {
-    name: "Samuel Boucher",
-    instrument: "Batterie",
-    role: "Batterie & Percussions & Trombone",
-    text: "Texte détaillé à compléter ici...",
-    photos: ["", "", ""]
-  },
-  audrey: {
-    name: "Audrey Archambault",
-    instrument: "Saxophone Ténor",
-    role: "Saxophone ténor & Clarinette",
-    text: "Texte détaillé à compléter ici...",
-    photos: ["", "", ""]
-  },
-  mia: {
-    name: "Mia Jade Côté",
-    instrument: "Trompette",
-    role: "Trompette",
-    text: "Texte détaillé à compléter ici...",
-    photos: ["", "", ""]
-  }
-};
 
-const modal = document.getElementById('memberModal');
-const modalClose = document.getElementById('modalClose');
-const modalInstrument = document.getElementById('modalInstrument');
-const modalName = document.getElementById('modalName');
-const modalRole = document.getElementById('modalRole');
-const modalText = document.getElementById('modalText');
-const modalGallery = document.getElementById('modalGallery');
+  // ─── DONNÉES MEMBRES ───
+  const membersData = {
+    evan: {
+      name: "Evan",
+      instrument: "Guitare",
+      role: "Guitare électrique & Guitare acoustique",
+      intro: "Texte d'introduction court (1-2 lignes).",
+      sections: [
+        {
+          title: "Parcours musical",
+          text: "Texte de la section 1 à compléter...",
+          image: "", // base64 ou URL
+          imageCaption: "Légende photo"
+        },
+        {
+          title: "Style & influences",
+          text: "Texte de la section 2 à compléter...",
+          image: "",
+          imageCaption: ""
+        }
+      ]
+    },
+    yasmine: {
+      name: "Yasmine Daoust",
+      instrument: "Clarinette",
+      role: "Clarinette & Saxophone alto & Clarinette alto",
+      intro: "Clarinettiste exceptionnelle et présidente de Swing Swing Swing, Yasmine est le pilier du groupe.",
+      sections: [
+        {
+          title: "Une enfance hors du commun",
+          text: `Yasmine vient d'un petit village du Québec : Coteau-du-Lac. Elle y passe une enfance tranquille en tant qu'enfant unique, bercée par le calme de sa région. Très tôt, son parcours scolaire sort de l'ordinaire. Dotée d'une grande vivacité d'esprit, elle saute la première année du primaire pour poursuivre un cheminement accéléré.`,
+          image: "",
+          imageCaption: "Yasmine lors d'un concert"
+        },
+        {
+          title: "La musique, une passion précoce",
+          text: `C'est à cette même époque que ses talents innés pour la musique sont remarqués par ses enseignants. Sa progression est si fulgurante qu'elle intègre l'harmonie de l'école alors qu'elle est deux ans plus jeune que tous les autres musiciens autour d'elle. À la recherche d'un environnement à la hauteur de son potentiel, elle arrive au Collège Bourget dès la 4e année du primaire, et elle y étudie avec passion depuis ce jour.`,
+          image: "",
+          imageCaption: ""
+        },
+        {
+          title: "Présidente de Swing Swing Swing",
+          text: `Sa détermination porte ses fruits de manière spectaculaire : à l'âge de quatorze ans seulement, elle participe activement à la création du groupe Swing Swing Swing. Aujourd'hui, Yasmine occupe une place centrale et indispensable au sein de cette formation musicale. En plus d'être une musicienne clé sur scène, elle assume le rôle de présidente du groupe. Son leadership naturel et son dévouement en font le véritable pilier de Swing Swing Swing. Elle guide ses pairs avec autant de rigueur que de passion, prouvant que sa maturité dépasse largement son âge.`,
+          image: "",
+          imageCaption: "Yasmine en répétition"
+        }
+      ]
+    },
+    alexandre: {
+      name: "Alexandre Archambault",
+      instrument: "Piano",
+      role: "Piano & Trompette & Flûte Traversière",
+      intro: "Pianiste calme et raffiné, Alexandre est l'héritier d'une lignée musicale familiale.",
+      sections: [
+        {
+          title: "Parcours",
+          text: "Texte à compléter...",
+          image: "",
+          imageCaption: ""
+        }
+      ]
+    },
+    arman: {
+      name: "Arman Benito",
+      instrument: "Basse",
+      role: "Basse électrique & Batterie & Percussion Auxiliaire",
+      intro: "Musicien polyvalent, Arman assure aussi bien à la basse qu'à la batterie.",
+      sections: [
+        {
+          title: "Parcours",
+          text: "Texte à compléter...",
+          image: "",
+          imageCaption: ""
+        }
+      ]
+    },
+    felix: {
+      name: "Félix Archambault",
+      instrument: "Trompette",
+      role: "Trompette & Euphonium",
+      intro: "Trompettiste passionné, Félix se dépasse à chaque répétition.",
+      sections: [
+        {
+          title: "Parcours",
+          text: "Texte à compléter...",
+          image: "",
+          imageCaption: ""
+        }
+      ]
+    },
+    samuel: {
+      name: "Samuel Boucher",
+      instrument: "Batterie",
+      role: "Batterie & Percussions & Trombone",
+      intro: "Le coeur battant du groupe, Sam impose une précision rythmique chirurgicale.",
+      sections: [
+        {
+          title: "Parcours",
+          text: "Texte à compléter...",
+          image: "",
+          imageCaption: ""
+        }
+      ]
+    },
+    audrey: {
+      name: "Audrey Archambault",
+      instrument: "Saxophone Ténor",
+      role: "Saxophone ténor & Clarinette",
+      intro: "Musicienne accomplie, Audrey navigue entre sax et clarinette avec une aisance naturelle.",
+      sections: [
+        {
+          title: "Parcours",
+          text: "Texte à compléter...",
+          image: "",
+          imageCaption: ""
+        }
+      ]
+    },
+    mia: {
+      name: "Mia Jade Côté",
+      instrument: "Trompette",
+      role: "Trompette",
+      intro: "Lumineuse et percutante, Mia Jade illumine chaque note.",
+      sections: [
+        {
+          title: "Parcours",
+          text: "Texte à compléter...",
+          image: "",
+          imageCaption: ""
+        }
+      ]
+    }
+  };
 
-document.querySelectorAll('.btn-lire-plus').forEach(btn => {
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const id = btn.getAttribute('data-member');
-    const data = membersData[id];
-    if (!data) return;
+  // ─── MODALE ───
+  const modal = document.getElementById('memberModal');
+  const modalClose = document.getElementById('modalClose');
 
-    modalInstrument.textContent = data.instrument;
-    modalName.textContent = data.name;
-    modalRole.textContent = data.role;
-    modalText.textContent = data.text;
+  document.querySelectorAll('.btn-lire-plus').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const id = btn.getAttribute('data-member');
+      const data = membersData[id];
+      if (!data) return;
 
-    modalGallery.innerHTML = '';
-    data.photos.filter(p => p).forEach(src => {
-      const img = document.createElement('img');
-      img.src = src;
-      modalGallery.appendChild(img);
+      // Vider et reconstruire le contenu de la modal-box
+      const box = document.querySelector('.modal-box');
+      box.innerHTML = '';
+
+      // ─ En-tête ─
+      const header = document.createElement('div');
+      header.style.cssText = 'display:flex;align-items:flex-start;gap:24px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid rgba(201,168,76,.2)';
+
+      // Photo principale (si dispo) ou dégradé
+      const photoEl = document.createElement('div');
+      photoEl.style.cssText = 'width:90px;height:90px;border-radius:4px;flex-shrink:0;overflow:hidden;border:1px solid rgba(201,168,76,.3);';
+      // On cherche la photo depuis la carte membre
+      const cardImg = document.querySelector(`[data-member="${id}"]`)?.closest('.member-card')?.querySelector('.member-avatar-photo');
+      if (cardImg) {
+        const img = document.createElement('img');
+        img.src = cardImg.src;
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;object-position:center 20%';
+        photoEl.appendChild(img);
+      } else {
+        photoEl.style.background = 'linear-gradient(135deg, var(--bleu-mid), var(--or-sombre))';
+      }
+
+      const headerInfo = document.createElement('div');
+      headerInfo.style.cssText = 'flex:1;min-width:0;';
+      headerInfo.innerHTML = `
+        <span style="display:inline-block;font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--or);margin-bottom:8px;padding:4px 10px;border:1px solid rgba(201,168,76,.4)">${data.instrument}</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--blanc);margin:0 0 4px">${data.name}</h3>
+        <p style="font-size:.75rem;color:var(--accent);margin:0 0 12px">${data.role}</p>
+        <p style="font-size:.85rem;color:rgba(245,240,232,.75);line-height:1.7;margin:0">${data.intro}</p>
+      `;
+
+      header.appendChild(photoEl);
+      header.appendChild(headerInfo);
+
+      // ─ Bouton fermer ─
+      const closeBtn = document.createElement('button');
+      closeBtn.className = 'modal-close';
+      closeBtn.textContent = '✕';
+      closeBtn.style.cssText = 'position:absolute;top:18px;right:18px;width:32px;height:32px;border:1px solid rgba(201,168,76,.4);background:transparent;color:var(--or-clair);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s';
+      closeBtn.addEventListener('mouseenter', () => closeBtn.style.background = 'rgba(201,168,76,.15)');
+      closeBtn.addEventListener('mouseleave', () => closeBtn.style.background = 'transparent');
+      closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+
+      box.appendChild(closeBtn);
+      box.appendChild(header);
+
+      // ─ Sections style Wikipédia ─
+      data.sections.forEach((sec, i) => {
+        const section = document.createElement('div');
+        section.style.cssText = 'margin-bottom:28px;';
+
+        // Titre de section
+        const secTitle = document.createElement('h4');
+        secTitle.style.cssText = `
+          font-family:'Cormorant Garamond',serif;
+          font-size:1.25rem;font-weight:600;
+          color:var(--or-clair);
+          margin:0 0 14px;
+          padding-bottom:8px;
+          border-bottom:1px solid rgba(201,168,76,.2);
+        `;
+        secTitle.textContent = sec.title;
+        section.appendChild(secTitle);
+
+        // Image flottante si dispo
+        if (sec.image) {
+          const figWrap = document.createElement('figure');
+          const side = i % 2 === 0 ? 'right' : 'left';
+          figWrap.style.cssText = `
+            float:${side};
+            margin: 0 0 12px ${side === 'right' ? '20px' : '0'};
+            margin-${side === 'right' ? 'left' : 'right'}: ${side === 'right' ? '20px' : '20px'};
+            width:160px;
+            border:1px solid rgba(201,168,76,.3);
+            background:rgba(0,0,0,.3);
+            padding:6px;
+          `;
+
+          const figImg = document.createElement('img');
+          figImg.src = sec.image;
+          figImg.style.cssText = 'width:100%;display:block;';
+          figWrap.appendChild(figImg);
+
+          if (sec.imageCaption) {
+            const cap = document.createElement('figcaption');
+            cap.style.cssText = 'font-size:.6rem;color:var(--gris);text-align:center;padding-top:5px;line-height:1.4;';
+            cap.textContent = sec.imageCaption;
+            figWrap.appendChild(cap);
+          }
+          section.appendChild(figWrap);
+        }
+
+        // Texte
+        const secText = document.createElement('p');
+        secText.style.cssText = 'font-size:.85rem;line-height:1.85;color:rgba(245,240,232,.8);margin:0;text-align:justify;';
+        secText.textContent = sec.text;
+        section.appendChild(secText);
+
+        // Clearfix
+        const clear = document.createElement('div');
+        clear.style.clear = 'both';
+        section.appendChild(clear);
+
+        box.appendChild(section);
+      });
+
+      modal.classList.add('active');
     });
-
-    modal.classList.add('active');
   });
-});
 
-modalClose.addEventListener('click', () => modal.classList.remove('active'));
-modal.addEventListener('click', (e) => {
-  if (e.target === modal) modal.classList.remove('active');
-});
+  // Fermer en cliquant overlay
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.classList.remove('active');
+  });
 </script>
 </body>
 </html>
