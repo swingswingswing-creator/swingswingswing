@@ -104,6 +104,7 @@
     .member-card:nth-child(5) .member-card-bg { background: linear-gradient(135deg, #0D1830 0%, #1A3A7A 40%, #0A1020 100%); }
     .member-card:nth-child(6) .member-card-bg { background: linear-gradient(135deg, #0D1A2B 0%, #1A3A5C 40%, #0A2030 100%); }
     .member-card:nth-child(7) .member-card-bg { background: linear-gradient(135deg, #1A1200 0%, #4A3010 40%, #2A1E08 100%); }
+    .member-card:nth-child(8) .member-card-bg { background: linear-gradient(135deg, #2A0D2B 0%, #5C1A4E 40%, #1E0A20 100%); }
     .member-avatar { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -60%); width: 160px; height: 160px; opacity: .25; transition: opacity .5s, transform .7s; }
     .member-card:hover .member-avatar { opacity: .4; transform: translate(-50%, -65%); }
 
@@ -272,6 +273,67 @@
       .stripe-box, .sondage-box { padding: 32px 22px; } .track-card { padding: 32px 24px; }
       .btn-drive { padding: 16px 28px; font-size: .65rem; }
     }
+    /* ─── BOUTON LIRE PLUS ─── */
+.btn-lire-plus {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--or-clair);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,168,76,.5);
+  padding-bottom: 2px;
+  cursor: pointer;
+  transition: color .3s, border-color .3s;
+}
+.btn-lire-plus:hover { color: var(--blanc); border-color: var(--blanc); }
+
+/* ─── MODALE DÉTAIL MEMBRE ─── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 5000;
+  background: rgba(6,10,18,.92);
+  display: none; align-items: center; justify-content: center;
+  padding: 40px 20px;
+  backdrop-filter: blur(6px);
+}
+.modal-overlay.active { display: flex; }
+.modal-box {
+  background: linear-gradient(160deg, #0D2B4E 0%, #091520 100%);
+  border: 1px solid rgba(201,168,76,.3);
+  max-width: 700px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  padding: 50px 44px;
+  position: relative;
+}
+.modal-close {
+  position: absolute; top: 18px; right: 18px;
+  width: 32px; height: 32px;
+  border: 1px solid rgba(201,168,76,.4);
+  background: transparent; color: var(--or-clair);
+  font-size: 1.1rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .3s;
+}
+.modal-close:hover { background: rgba(201,168,76,.15); }
+.modal-instrument {
+  display: inline-block; font-size: .6rem; letter-spacing: .25em;
+  text-transform: uppercase; color: var(--or); margin-bottom: 12px;
+  padding: 4px 10px; border: 1px solid rgba(201,168,76,.4);
+}
+.modal-name {
+  font-family: 'Cormorant Garamond', serif; font-size: 2.2rem;
+  font-weight: 600; color: var(--blanc); margin-bottom: 4px;
+}
+.modal-role { font-size: .8rem; color: var(--accent); letter-spacing: .08em; margin-bottom: 24px; }
+.modal-text { font-size: .88rem; line-height: 1.85; color: rgba(245,240,232,.8); margin-bottom: 28px; }
+.modal-gallery {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+.modal-gallery img {
+  width: 100%; aspect-ratio: 1/1; object-fit: cover;
+  border: 1px solid rgba(201,168,76,.25);
+}
   </style>
 </head>
 <body>
@@ -362,6 +424,7 @@
         <h3 class="member-name">Yasmine Daoust</h3>
         <p class="member-role">Clarinette &amp; Saxophone alto &amp; Clarinette alto</p>
         <p class="member-bio">Yasmine est la clarinettiste dynamique d'un groupe de jazz où elle s'implique à fond. Toujours soucieuse de progresser, elle suit des cours avec rigueur pour perfectionner sa technique et enrichir ses solos. </p>
+      <span class="btn-lire-plus" data-member="yasmine">Lire plus →</span>
       </div>
     </div>
 
@@ -381,6 +444,7 @@
         <h3 class="member-name">Alexandre Archambault</h3>
         <p class="member-role">Piano &amp; Trompette &amp; Flûte Traversière</p>
         <p class="member-bio">Alexandre est le pianiste du groupe, reconnu pour son calme olympien et sa patience à toute épreuve. Il ne perd jamais son sang-froid, ce qui apporte une grande stabilité aux répétitions. Issu d'une famille de musiciens, il marche sur les traces de son grand-père, pianiste professionnel, dont il a hérité la finesse et le talent. </p>
+      <span class="btn-lire-plus" data-member="alexandre">Lire plus →</span>
       </div>
     </div>
 
@@ -394,6 +458,7 @@
         <h3 class="member-name">Arman Benito</h3>
         <p class="member-role">Basse électrique &amp; Batterie &amp; Percussion Auxiliaire </p>
         <p class="member-bio">Arman est un musicien polyvalent et il assure aussi bien à la basse qu'à la batterie ou aux percussions auxiliaires.</p>
+     <span class="btn-lire-plus" data-member="arman">Lire plus →</span>
       </div>
     </div>
 
@@ -407,6 +472,7 @@
         <h3 class="member-name">Félix Archambault</h3>
         <p class="member-role">Trompette &amp; Euphonium</p>
         <p class="member-bio">Félix est un trompettiste passionné qui est toujours prêt à se dépasser. Il s'investit sans relâche et travaille sa technique quotidiennement pour franchir de nouveaux paliers. Sa détermination et son style personnel enrichissent chaque morceau, faisant de lui un élément clé de la formation de jazz.</p>
+     <span class="btn-lire-plus" data-member="felix">Lire plus →</span>
       </div>
     </div>
 
@@ -420,6 +486,7 @@
         <h3 class="member-name">Samuel Boucher</h3>
         <p class="member-role">Batterie &amp; Percussions &amp; Trombone</p>
         <p class="member-bio">Le cœur battant du groupe, Sam impose une précision rythmique chirurgicale tout en offrant une liberté d'expression qui pousse ses coéquipiers à se surpasser soir après soir.</p>
+      <span class="btn-lire-plus" data-member="samuel">Lire plus →</span>
       </div>
     </div>
 
@@ -433,6 +500,7 @@
         <h3 class="member-name">Audrey Archambault</h3>
         <p class="member-role">Saxophone ténor &amp; Clarinette</p>
         <p class="member-bio">Musicienne accomplie et passionnée, Audrey maîtrise avec brio le saxophone ténor et la clarinette, naviguant entre les deux avec une aisance naturelle et un sens musical affûté qui enrichit chaque pièce du groupe.</p>
+      <span class="btn-lire-plus" data-member="audrey">Lire plus →</span>
       </div>
     </div>
 
@@ -446,12 +514,14 @@
         <h3 class="member-name">Mia Jade Côté</h3>
         <p class="member-role">Trompette</p>
         <p class="member-bio">Lumineuse et percutante, Mia Jade insuffle une énergie électrisante à chaque note. Sa trompette chante avec une clarté cristalline qui illumine les arrangements les plus complexes.</p>
+      <span class="btn-lire-plus" data-member="mia">Lire plus →</span>
       </div>
     </div>
 
     <!-- 8 — Evan -->
     <div class="member-card">
       <div class="member-card-bg"></div>
+      <img class="member-avatar-photo" src="data:image/jpeg;base64,COLLEZ_VOTRE_BASE64_ICI" alt="Evan à la guitare" />
       <div class="member-avatar">
         <!-- Remplacez par une photo si vous en avez une, sinon laissez ce dégradé -->
       </div>
@@ -461,6 +531,7 @@
         <h3 class="member-name">Evan</h3>
         <p class="member-role">Guitare électrique &amp; Guitare acoustique</p>
         <p class="member-bio">Evan apporte au groupe sa sensibilité harmonique et son jeu nuancé à la guitare, tissant des textures qui enrichissent l'ensemble du son du groupe.</p>
+        <span class="btn-lire-plus" data-member="evan">Lire plus →</span>
       </div>
     </div>
   </div>
@@ -614,7 +685,17 @@
  <p class="footer-copy">© 2026 Swing Swing Swing — Tous droits réservés - Fait par <a href="https://sites.google.com/view/unblockedgame6748937/accueil?authuser=0" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Louis-Philippe Sauvé</a> avec l'étroite collaboration d'Henri Turgeon</p>
   <ul class="footer-links"><li><a href="#">Instagram</a></li><li><a href="https://www.youtube.com/@SwingSwingSwing-JazzBand">YouTube</a></li><li><a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCJDpcMpbjFtrMqVzhrLbZxqjfHrBhTHsclpdMwkxpVwhRtrnDsctStDjHMhjsKWFLKbBB">Contact</a></li></ul>
 </footer>
-
+<!-- MODALE DÉTAIL MEMBRE -->
+<div class="modal-overlay" id="memberModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">✕</button>
+    <span class="modal-instrument" id="modalInstrument"></span>
+    <h3 class="modal-name" id="modalName"></h3>
+    <p class="modal-role" id="modalRole"></p>
+    <p class="modal-text" id="modalText"></p>
+    <div class="modal-gallery" id="modalGallery"></div>
+  </div>
+</div>
 <script>
   const cur = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
@@ -652,6 +733,106 @@
     el.style.transition = 'opacity .6s ease, transform .6s ease';
     observer.observe(el);
   });
+  // ─── DONNÉES DÉTAILLÉES DES MEMBRES ───
+const membersData = {
+  evan: {
+    name: "Evan",
+    instrument: "Guitare",
+    role: "Guitare électrique & Guitare acoustique",
+    text: "Texte détaillé à compléter ici : parcours musical, anecdotes, influences, projets futurs...",
+    photos: [
+      // Remplacez chaque "" par votre chaîne base64 complète, ex: "data:image/jpeg;base64,/9j/4AAQ..."
+      "", 
+      "",
+      ""
+    ]
+  },
+  yasmine: {
+    name: "Yasmine Daoust",
+    instrument: "Clarinette",
+    role: "Clarinette & Saxophone alto & Clarinette alto",
+    text: "Texte détaillé à compléter ici...",
+    photos: ["", "", ""]
+  },
+  alexandre: {
+    name: "Alexandre Archambault",
+    instrument: "Piano",
+    role: "Piano & Trompette & Flûte Traversière",
+    text: "Texte détaillé à compléter ici...",
+    photos: ["", "", ""]
+  },
+  arman: {
+    name: "Arman Benito",
+    instrument: "Basse",
+    role: "Basse électrique & Batterie & Percussion Auxiliaire",
+    text: "Texte détaillé à compléter ici...",
+    photos: ["", "", ""]
+  },
+  felix: {
+    name: "Félix Archambault",
+    instrument: "Trompette",
+    role: "Trompette & Euphonium",
+    text: "Texte détaillé à compléter ici...",
+    photos: ["", "", ""]
+  },
+  samuel: {
+    name: "Samuel Boucher",
+    instrument: "Batterie",
+    role: "Batterie & Percussions & Trombone",
+    text: "Texte détaillé à compléter ici...",
+    photos: ["", "", ""]
+  },
+  audrey: {
+    name: "Audrey Archambault",
+    instrument: "Saxophone Ténor",
+    role: "Saxophone ténor & Clarinette",
+    text: "Texte détaillé à compléter ici...",
+    photos: ["", "", ""]
+  },
+  mia: {
+    name: "Mia Jade Côté",
+    instrument: "Trompette",
+    role: "Trompette",
+    text: "Texte détaillé à compléter ici...",
+    photos: ["", "", ""]
+  }
+};
+
+const modal = document.getElementById('memberModal');
+const modalClose = document.getElementById('modalClose');
+const modalInstrument = document.getElementById('modalInstrument');
+const modalName = document.getElementById('modalName');
+const modalRole = document.getElementById('modalRole');
+const modalText = document.getElementById('modalText');
+const modalGallery = document.getElementById('modalGallery');
+
+document.querySelectorAll('.btn-lire-plus').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const id = btn.getAttribute('data-member');
+    const data = membersData[id];
+    if (!data) return;
+
+    modalInstrument.textContent = data.instrument;
+    modalName.textContent = data.name;
+    modalRole.textContent = data.role;
+    modalText.textContent = data.text;
+
+    modalGallery.innerHTML = '';
+    data.photos.filter(p => p).forEach(src => {
+      const img = document.createElement('img');
+      img.src = src;
+      modalGallery.appendChild(img);
+    });
+
+    modal.classList.add('active');
+  });
+});
+
+modalClose.addEventListener('click', () => modal.classList.remove('active'));
+modal.addEventListener('click', (e) => {
+  if (e.target === modal) modal.classList.remove('active');
+});
 </script>
 </body>
 </html>
