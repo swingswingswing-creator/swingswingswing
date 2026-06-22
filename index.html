@@ -334,6 +334,47 @@
   width: 100%; aspect-ratio: 1/1; object-fit: cover;
   border: 1px solid rgba(201,168,76,.25);
 }
+    /* ─── MODALE FORMULAIRE GOOGLE FORMS ─── */
+.form-modal-overlay {
+  position: fixed; inset: 0; z-index: 6000;
+  background: rgba(6,10,18,.92);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+  backdrop-filter: blur(6px);
+}
+.form-modal-overlay.active { display: flex; }
+.form-modal-box {
+  background: #0D1830;
+  border: 1px solid rgba(201,168,76,.3);
+  width: 100%; max-width: 900px;
+  height: 90vh;
+  position: relative;
+  display: flex; flex-direction: column;
+}
+.form-modal-header {
+  display: flex; justify-content: flex-end;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(201,168,76,.2);
+  flex-shrink: 0;
+}
+.form-modal-close {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(201,168,76,.4);
+  background: transparent; color: var(--or-clair);
+  font-size: 1.2rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .3s;
+}
+.form-modal-close:hover { background: rgba(201,168,76,.15); }
+.form-modal-iframe-wrap {
+  flex: 1; width: 100%; height: 100%; overflow: hidden;
+}
+.form-modal-iframe-wrap iframe {
+  width: 100%; height: 100%; border: 0; display: block;
+}
+@media (max-width: 600px) {
+  .form-modal-box { height: 95vh; max-width: 100%; }
+}
   </style>
 </head>
 <body>
@@ -551,11 +592,7 @@
       <div class="prestation-video-wrapper" style="position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(201,168,76,.18);overflow:hidden;background:#000;">
         <div class="deco-corner" style="position:absolute;top:-1px;left:-1px;width:28px;height:28px;border-top:2px solid var(--or);border-left:2px solid var(--or);z-index:3;pointer-events:none;"></div>
         <div class="deco-corner" style="position:absolute;bottom:-1px;right:-1px;width:28px;height:28px;border-bottom:2px solid var(--or);border-right:2px solid var(--or);z-index:3;pointer-events:none;"></div>
-        <!-- ✏️ OPTION 1 — YouTube (recommandé pour Google Sites) :
-             1. Allez sur youtube.com → Mettre en ligne
-             2. Choisissez "Non répertorié" (vidéo privée)
-             3. Copiez l'ID de la vidéo depuis l'URL (ex: youtube.com/watch?v=VOTRE_ID)
-             4. Remplacez VOTRE_ID_YOUTUBE ci-dessous par votre ID -->
+       
         <iframe
           id="prestation-iframe"
           src="https://www.youtube.com/embed/dFe78oJGH20?autoplay=0&mute=1&loop=1&playlist=dFe78oJGH20&controls=1&rel=0&modestbranding=1&enablejsapi=1"
@@ -627,9 +664,9 @@
           </div>
           <p class="sondage-box-title">Votez pour votre pièce préférée</p>
           <p class="sondage-box-subtitle">Participez à notre sondage et aidez-nous à choisir le programme du prochain concert. Chaque vote compte !</p>
-          <a href="https://forms.gle/XCnmYagj19WZYXum9" target="_blank" rel="noopener noreferrer" class="btn-sondage">
-            <span>Participer au sondage</span>
-          </a>
+        <a href="#" class="btn-sondage" onclick="openFormModal('https://docs.google.com/forms/d/e/1FAIpQLSc5H7sxcB8XpMA9UHhB8RUsxe3gtQgCz694Ot0XAOUoljkUMQ/viewform?embedded=true'); return false;">
+  <span>Participer au sondage</span>
+</a>
           <p class="sondage-note">Formulaire Google Forms · Anonyme</p>
         </div>
       </div>
@@ -671,9 +708,9 @@
           </div>
           <p class="reserv-title">Réserver le groupe</p>
           <p class="reserv-subtitle">Vous souhaitez nous avoir lors de votre événement ? Votre mariage, gala, soirée privée ou festival ? Contactez-nous via le formulaire.</p>
-          <a href="https://forms.gle/2kaisfE5t78eht5B6" target="_blank" rel="noopener noreferrer" class="btn-reserv">
-            <span>Faire une demande</span>
-          </a>
+         <a href="#" class="btn-reserv" onclick="openFormModal('https://docs.google.com/forms/d/e/1FAIpQLSdqQ0rYJArwWT0sv8NZAltY2E8rbscqQ3afL2v3OQPGiz3pvA/viewform?embedded=true'); return false;">
+  <span>Faire une demande</span>
+</a>
           <p class="stripe-note">Formulaire de contact · Réponse sous 48h</p>
         </div>
       </div>
@@ -685,6 +722,18 @@
  <p class="footer-copy">© 2026 Swing Swing Swing — Tous droits réservés - Fait par <a href="https://sites.google.com/view/unblockedgame6748937/accueil?authuser=0" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Louis-Philippe Sauvé</a> avec l'étroite collaboration d'Henri Turgeon</p>
   <ul class="footer-links"><li><a href="#">Instagram</a></li><li><a href="https://www.youtube.com/@SwingSwingSwing-JazzBand">YouTube</a></li><li><a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCJDpcMpbjFtrMqVzhrLbZxqjfHrBhTHsclpdMwkxpVwhRtrnDsctStDjHMhjsKWFLKbBB">Contact</a></li></ul>
 </footer>
+  <!-- MODALE FORMULAIRE GOOGLE FORMS -->
+<div class="form-modal-overlay" id="formModal">
+  <div class="form-modal-box">
+    <div class="form-modal-header">
+      <button class="form-modal-close" id="formModalClose">✕</button>
+    </div>
+    <div class="form-modal-iframe-wrap">
+      <iframe id="formModalIframe" src="" loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+
 <!-- MODALE DÉTAIL MEMBRE -->
 <div class="modal-overlay" id="memberModal">
   <div class="modal-box">
@@ -697,6 +746,18 @@
   </div>
 </div>
 <script>
+  function openFormModal(url) {
+  document.getElementById('formModalIframe').src = url;
+  document.getElementById('formModal').classList.add('active');
+}
+function closeFormModal() {
+  document.getElementById('formModal').classList.remove('active');
+  document.getElementById('formModalIframe').src = '';
+}
+document.getElementById('formModalClose').addEventListener('click', closeFormModal);
+document.getElementById('formModal').addEventListener('click', (e) => {
+  if (e.target.id === 'formModal') closeFormModal();
+});
  
   // ─── CURSEUR ───
   const cur = document.getElementById('cursor');
