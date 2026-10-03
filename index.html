@@ -182,7 +182,6 @@
       .page{padding-top:170px}.hero-content{padding-top:180px}
     }
     @media (max-width:560px){.members-grid{grid-template-columns:1fr}.reserv-box{padding:32px 20px}}
-    @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
     /* ── FUNKY SOMBRE ── */
     :root{--orange:#E07400;--cyan:#05B0B5;--violet:#4B0086;--violet-hi:#7b22c9}
@@ -240,6 +239,17 @@
     @media (max-width:900px){.galerie{padding:20px 20px 80px}.car-btn{width:44px;height:44px}}
     .member-name{font-size:2.6rem}
     .member-role{font-size:1.6rem;color:var(--cyan);margin:2px 0 0}
+
+    /* MÉDIAS */
+    .medias-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:56px;max-width:900px;margin:0 auto}
+    .media-item{display:flex;flex-direction:column;align-items:center;gap:16px;text-decoration:none;font-size:2rem;font-weight:700;transition:transform .25s}
+    .media-item:hover{transform:translateY(-6px) rotate(-3deg)}
+    .media-icon{width:130px;height:130px;border-radius:50%;border:4px solid #000;box-shadow:8px 8px 0 var(--violet-hi);display:flex;align-items:center;justify-content:center;transition:box-shadow .25s}
+    .media-item:hover .media-icon{box-shadow:11px 11px 0 var(--cyan)}
+    .media-icon svg{width:64px;height:64px;fill:#fff}
+    .media-ig .media-icon{background:linear-gradient(45deg,#f09433,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888)}
+    .media-fb .media-icon{background:#1877F2}
+    .media-yt .media-icon{background:#FF0000}
   </style>
 </head>
 <body>
@@ -254,6 +264,7 @@
     <li><a href="#/prestation" data-route="prestation">Prestation</a></li>
     <li><a href="#/repertoire" data-route="repertoire">Répertoire</a></li>
     <li><a href="#/reserver" data-route="reserver">Réserver</a></li>
+    <li><a href="#/medias" data-route="medias">Médias</a></li>
   </ul>
 </nav>
 <div id="bg-shapes" aria-hidden="true">
@@ -426,7 +437,7 @@
     <!-- 8 — Evan -->
     <div class="member-card">
       <div class="member-card-bg"></div>
-      <img class="member-avatar-photo" src="data:image/jpeg;base64,COLLEZ_VOTRE_BASE64_ICI" alt="Evan Kamel à la guitare" />
+      <img class="member-avatar-photo" src="https://i.ibb.co/MD0CvYrv/5afeda04-9433-4ad8-a05d-38660f260c45.jpg" referrerpolicy="no-referrer" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='https://i.ibb.co/RpwDFxfF/5afeda04-9433-4ad8-a05d-38660f260c45.jpg'}" alt="Evan Kamel à la guitare" />
       <div class="member-avatar">
         <!-- Remplacez par une photo si vous en avez une, sinon laissez ce dégradé -->
       </div>
@@ -531,10 +542,33 @@
     </div>
   </div>
 </section>
+<section id="medias" class="page" data-route="medias">
+  <div class="page-inner">
+    <div class="section-header">
+      <span class="section-tag">Suivez-nous</span>
+      <h2 class="section-title"><em>Médias</em></h2>
+      <p class="section-subtitle">Retrouvez Swing Swing Swing sur les réseaux sociaux.</p>
+    </div>
+    <div class="medias-grid">
+      <a class="media-item media-ig" href="https://www.instagram.com/swingswingswing.jazzband/" target="_blank" rel="noopener noreferrer">
+        <span class="media-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.15 3.23-1.66 4.77-4.92 4.92-1.27.06-1.64.07-4.85.07s-3.58-.01-4.85-.07c-3.26-.15-4.77-1.7-4.92-4.92C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85C2.38 3.92 3.9 2.38 7.15 2.23 8.42 2.17 8.8 2.16 12 2.16zM12 0C8.74 0 8.33.01 7.05.07 2.7.27.27 2.69.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.2 4.36 2.62 6.78 6.98 6.98C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c4.35-.2 6.78-2.62 6.98-6.98.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.2-4.35-2.62-6.78-6.98-6.98C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 1 0 0 12.32 6.16 6.16 0 0 0 0-12.32zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.4-11.85a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/></svg></span>
+        <span>Instagram</span>
+      </a>
+      <a class="media-item media-fb" href="https://www.facebook.com/swingswingswing.jazzband/" target="_blank" rel="noopener noreferrer">
+        <span class="media-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07z"/></svg></span>
+        <span>Facebook</span>
+      </a>
+      <a class="media-item media-yt" href="https://www.youtube.com/@SwingSwingSwing-JazzBand" target="_blank" rel="noopener noreferrer">
+        <span class="media-icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg></span>
+        <span>YouTube</span>
+      </a>
+    </div>
+  </div>
+</section>
 <footer>
   <div class="footer-logo">Swing <span>Swing</span> Swing</div>
  <p class="footer-copy">© 2026 Swing Swing Swing — Tous droits réservés - Fait par <a href="https://sites.google.com/view/unblockedgame6748937/accueil?authuser=0" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Louis-Philippe Sauvé</a> avec l'étroite collaboration d'Henri Turgeon</p>
-  <ul class="footer-links"><li><a href="#">Instagram</a></li><li><a href="https://www.youtube.com/@SwingSwingSwing-JazzBand">YouTube</a></li><li><a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCJDpcMpbjFtrMqVzhrLbZxqjfHrBhTHsclpdMwkxpVwhRtrnDsctStDjHMhjsKWFLKbBB">Contact</a></li></ul>
+  <ul class="footer-links"><li><a href="https://www.instagram.com/swingswingswing.jazzband/" target="_blank" rel="noopener noreferrer">Instagram</a></li><li><a href="https://www.facebook.com/swingswingswing.jazzband/" target="_blank" rel="noopener noreferrer">Facebook</a></li><li><a href="https://www.youtube.com/@SwingSwingSwing-JazzBand">YouTube</a></li><li><a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCJDpcMpbjFtrMqVzhrLbZxqjfHrBhTHsclpdMwkxpVwhRtrnDsctStDjHMhjsKWFLKbBB">Contact</a></li></ul>
 </footer>
   <!-- MODALE FORMULAIRE GOOGLE FORMS -->
 <div class="form-modal-overlay" id="formModal">
@@ -586,12 +620,12 @@ document.getElementById('formModal').addEventListener('click', (e) => {
   });
 
   // ─── PAGES INDEXÉES + TRANSITIONS ───
-  const ROUTES = { accueil: 'Accueil', groupe: 'Le Groupe', prestation: 'Prestation', repertoire: 'Répertoire', reserver: 'Réserver' };
-  const ALIAS = { 'réserver': 'reserver', reservation: 'reserver', billetterie: 'reserver', membres: 'groupe', 'répertoire': 'repertoire', sondage: 'accueil' };
+  const ROUTES = { accueil: 'Accueil', groupe: 'Le Groupe', prestation: 'Prestation', repertoire: 'Répertoire', reserver: 'Réserver', medias: 'Médias' };
+  const ALIAS = { 'médias': 'medias', media: 'medias',  'réserver': 'reserver', reservation: 'reserver', billetterie: 'reserver', membres: 'groupe', 'répertoire': 'repertoire', sondage: 'accueil' };
   const pages = document.querySelectorAll('.page');
   const navLinks = document.querySelectorAll('.nav-links a');
   const ORDER = Object.keys(ROUTES);
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reduceMotion = false;
   let current = null, busy = false, pending = null;
 
   function routeFromHash() {
@@ -615,7 +649,7 @@ document.getElementById('formModal').addEventListener('click', (e) => {
     if (busy) { pending = route; return; }
     const from = document.querySelector('.page.active');
     const to = document.querySelector('.page[data-route="' + route + '"]');
-    if (reduceMotion || !from || !to) { showPage(route); return; }
+    if (!from || !to || !from.animate) { showPage(route); return; }
     busy = true;
     const dir = ORDER.indexOf(route) > ORDER.indexOf(current) ? 1 : -1;
     from.style.top = -window.scrollY + 'px';
@@ -912,12 +946,10 @@ document.getElementById('formModal').addEventListener('click', (e) => {
     const track = car.querySelector('.track'), n = track.children.length, dots = [...car.querySelectorAll('.dot')];
     let i = 0, timer, x0 = null;
     function go(k) { i = (k + n) % n; track.style.transform = 'translateX(' + (-100 * i) + '%)'; dots.forEach((d, j) => d.classList.toggle('on', j === i)); }
-    function play() { clearInterval(timer); if (!reduceMotion) timer = setInterval(() => go(i + 1), 4500); }
+    function play() { clearInterval(timer); if (!reduceMotion) timer = setInterval(() => go(i + 1), 4000); }
     car.querySelector('.prev').addEventListener('click', () => { go(i - 1); play(); });
     car.querySelector('.next').addEventListener('click', () => { go(i + 1); play(); });
     dots.forEach((d, j) => d.addEventListener('click', () => { go(j); play(); }));
-    car.addEventListener('mouseenter', () => clearInterval(timer));
-    car.addEventListener('mouseleave', play);
     car.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') { go(i - 1); play(); } if (e.key === 'ArrowRight') { go(i + 1); play(); } });
     car.addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
     car.addEventListener('touchend', e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; if (Math.abs(dx) > 40) { go(i + (dx < 0 ? 1 : -1)); play(); } x0 = null; });
