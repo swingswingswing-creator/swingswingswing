@@ -269,6 +269,19 @@
     .footer-copy{font-size:1rem;line-height:1.2}
     .footer-links a{padding:0 14px;font-size:1.1rem;border-width:2px}
     @media (max-width:900px){footer{padding:16px 20px;gap:8px}}
+
+    /* RÉSERVATION & CONTACT */
+    .resa-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px 48px;max-width:1000px;margin:0 auto;align-items:center}
+    .resa-text{font-size:clamp(2.2rem,3.6vw,3rem);font-weight:700;line-height:1.1}
+    .resa-tl{text-align:left;color:var(--orange);text-shadow:3px 3px 0 var(--violet)}
+    .resa-br{text-align:right;color:var(--cyan);text-shadow:3px 3px 0 var(--violet)}
+    .resa-forms{justify-self:end;display:flex;flex-direction:column;align-items:center;gap:12px;text-decoration:none;font-size:1.8rem;font-weight:700;transition:transform .25s}
+    .resa-forms:hover{transform:translateY(-6px) rotate(3deg)}
+    .resa-logo{width:150px;height:150px;border-radius:36px;background:var(--carte);border:4px solid var(--cyan);box-shadow:8px 8px 0 var(--violet-hi);display:flex;align-items:center;justify-content:center}
+    .resa-logo svg{width:70px;height:92px}
+    .resa-mail{justify-self:start;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;color:var(--blanc);text-decoration:underline wavy var(--cyan);text-underline-offset:8px;word-break:break-all;transition:color .2s}
+    .resa-mail:hover{color:var(--orange)}
+    @media (max-width:700px){.resa-grid{grid-template-columns:1fr;gap:34px;text-align:center}.resa-tl,.resa-br{text-align:center}.resa-forms,.resa-mail{justify-self:center}}
   </style>
 </head>
 <body>
@@ -282,7 +295,7 @@
     <li><a href="#/groupe" data-route="groupe">Le Groupe</a></li>
     <li><a href="#/prestation" data-route="prestation">Prestation</a></li>
     <li><a href="#/repertoire" data-route="repertoire">Répertoire</a></li>
-    <li><a href="#/reserver" data-route="reserver">Réserver</a></li>
+    <li><a href="#/reserver" data-route="reserver">Réservation</a></li>
     <li><a href="#/medias" data-route="medias">Médias</a></li>
   </ul>
 </nav>
@@ -516,38 +529,19 @@
 </section>
 
 <section id="reserver" class="page" data-route="reserver">
-  <div class="tickets-bg"></div>
   <div class="page-inner">
-    <div class="section-divider"><span class="section-divider-icon">◆</span></div>
-    <div class="tickets-layout">
-      <div class="tickets-info">
-        <div class="tickets-badge">Réservation</div>
-        <h2 class="tickets-heading">Réservez le <em>groupe</em></h2>
-        <p class="tickets-desc">Vivez l'expérience Swing Swing Swing sur scène. Mariage, gala, soirée privée ou festival : écrivez-nous, on s'occupe du reste. Voici nos prochains rendez-vous.</p>
-        <ul class="show-list">
-          <li class="show-item"><div class="show-date"><div class="show-date-day">???</div><div class="show-date-month">Juin</div></div><div class="show-details"><div class="show-venue">Spectacle non déterminé</div><div class="show-city">Rigaud, QC · 20h00</div></div><div class="show-dot"></div></li>
-          <li class="show-item"><div class="show-date"><div class="show-date-day">???</div><div class="show-date-month">Juin</div></div><div class="show-details"><div class="show-venue">Spectacle non déterminé</div><div class="show-city">Coteau-du-lac, QC · 21h30</div></div><div class="show-dot"></div></li>
-          <li class="show-item"><div class="show-date"><div class="show-date-day">???</div><div class="show-date-month">Juillet</div></div><div class="show-details"><div class="show-venue">Spectacle non déterminé</div><div class="show-city">Vaudreuil, QC · 20h30</div></div><div class="show-dot" style="animation-delay:.5s"></div></li>
-        </ul>
-      </div>
-      <div>
-        <div class="reserv-box">
-          <div class="reserv-divider">
-            <span class="reserv-divider-icon">◆</span>
-          </div>
-          <div class="reserv-icon">
-            <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
-              <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>
-            </svg>
-          </div>
-          <p class="reserv-title">Réserver le groupe</p>
-          <p class="reserv-subtitle">Vous souhaitez nous avoir lors de votre événement ? Votre mariage, gala, soirée privée ou festival ? Contactez-nous via le formulaire.</p>
-         <a href="#" class="btn-reserv" onclick="openFormModal('https://docs.google.com/forms/d/e/1FAIpQLSdqQ0rYJArwWT0sv8NZAltY2E8rbscqQ3afL2v3OQPGiz3pvA/viewform?embedded=true'); return false;">
-  <span>Faire une demande</span>
-</a>
-          <p class="stripe-note">Formulaire de contact · Réponse sous 48h</p>
-        </div>
-      </div>
+    <div class="section-header">
+      <span class="section-tag">Nous joindre</span>
+      <h2 class="section-title">Réservation &amp; <em>Contact</em></h2>
+    </div>
+    <div class="resa-grid">
+      <p class="resa-text resa-tl">Réservez le groupe pour une prestation inoubliable!</p>
+      <a class="resa-forms" href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ0rYJArwWT0sv8NZAltY2E8rbscqQ3afL2v3OQPGiz3pvA/viewform" onclick="openFormModal('https://docs.google.com/forms/d/e/1FAIpQLSdqQ0rYJArwWT0sv8NZAltY2E8rbscqQ3afL2v3OQPGiz3pvA/viewform?embedded=true'); return false;" aria-label="Formulaire de réservation Google Forms">
+        <span class="resa-logo"><svg viewBox="0 0 48 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 0h25l17 17v41a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6z" fill="#7248B9"/><path d="M31 0l17 17H35a4 4 0 0 1-4-4z" fill="#B79BE3"/><circle cx="12" cy="32" r="3" fill="#fff"/><rect x="19" y="29.5" width="19" height="5" rx="2.5" fill="#fff"/><circle cx="12" cy="44" r="3" fill="#fff"/><rect x="19" y="41.5" width="19" height="5" rx="2.5" fill="#fff"/></svg></span>
+        <span>Formulaire</span>
+      </a>
+      <a class="resa-mail" href="mailto:swingswingswing.jazzband@gmail.com">swingswingswing.jazzband@gmail.com</a>
+      <p class="resa-text resa-br">Contactez-nous par courriel.</p>
     </div>
   </div>
 </section>
@@ -577,7 +571,7 @@
 <footer>
   <div class="footer-logo">Swing <span>Swing</span> Swing</div>
  <p class="footer-copy">© 2026 Swing Swing Swing — Tous droits réservés - Fait par <a href="https://cool-firefly-371c.lpsauve2.workers.dev/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Louis-Philippe Sauvé</a> avec l'étroite collaboration d'Henri Turgeon</p>
-  <ul class="footer-links"><li><a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCJDpcMpbjFtrMqVzhrLbZxqjfHrBhTHsclpdMwkxpVwhRtrnDsctStDjHMhjsKWFLKbBB">Contact</a></li></ul>
+  <ul class="footer-links"><li><a href="mailto:swingswingswing.jazzband@gmail.com">Contact</a></li></ul>
 </footer>
   <!-- MODALE FORMULAIRE GOOGLE FORMS -->
 <div class="form-modal-overlay" id="formModal">
@@ -629,7 +623,7 @@ document.getElementById('formModal').addEventListener('click', (e) => {
   });
 
   // ─── PAGES INDEXÉES + TRANSITIONS ───
-  const ROUTES = { accueil: 'Accueil', groupe: 'Le Groupe', prestation: 'Prestation', repertoire: 'Répertoire', reserver: 'Réserver', medias: 'Médias' };
+  const ROUTES = { accueil: 'Accueil', groupe: 'Le Groupe', prestation: 'Prestation', repertoire: 'Répertoire', reserver: 'Réservation & Contact', medias: 'Médias' };
   const ALIAS = { 'médias': 'medias', media: 'medias',  'réserver': 'reserver', reservation: 'reserver', billetterie: 'reserver', membres: 'groupe', 'répertoire': 'repertoire', sondage: 'accueil' };
   const pages = document.querySelectorAll('.page');
   const navLinks = document.querySelectorAll('.nav-links a');
