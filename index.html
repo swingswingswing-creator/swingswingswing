@@ -270,18 +270,17 @@
     .footer-links a{padding:0 14px;font-size:1.1rem;border-width:2px}
     @media (max-width:900px){footer{padding:16px 20px;gap:8px}}
 
-    /* RÉSERVATION & CONTACT */
-    .resa-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px 48px;max-width:1000px;margin:0 auto;align-items:center}
-    .resa-text{font-size:clamp(2.2rem,3.6vw,3rem);font-weight:700;line-height:1.1}
-    .resa-tl{text-align:left;color:var(--orange);text-shadow:3px 3px 0 var(--violet)}
-    .resa-br{text-align:right;color:var(--cyan);text-shadow:3px 3px 0 var(--violet)}
-    .resa-forms{justify-self:end;display:flex;flex-direction:column;align-items:center;gap:12px;text-decoration:none;font-size:1.8rem;font-weight:700;transition:transform .25s}
-    .resa-forms:hover{transform:translateY(-6px) rotate(3deg)}
-    .resa-logo{width:150px;height:150px;border-radius:36px;background:var(--carte);border:4px solid var(--cyan);box-shadow:8px 8px 0 var(--violet-hi);display:flex;align-items:center;justify-content:center}
-    .resa-logo svg{width:70px;height:92px}
-    .resa-mail{justify-self:start;font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;color:var(--blanc);text-decoration:underline wavy var(--cyan);text-underline-offset:8px;word-break:break-all;transition:color .2s}
-    .resa-mail:hover{color:var(--orange)}
-    @media (max-width:700px){.resa-grid{grid-template-columns:1fr;gap:34px;text-align:center}.resa-tl,.resa-br{text-align:center}.resa-forms,.resa-mail{justify-self:center}}
+    /* ── MODIFS ── */
+    .w1{color:var(--orange);text-shadow:5px 5px 0 var(--cyan)}
+    .w2{color:var(--cyan);text-shadow:5px 5px 0 var(--violet-hi)}
+    .w3{color:var(--violet-hi);text-shadow:5px 5px 0 var(--orange)}
+    .hero-title .w1,.hero-title .w2,.hero-title .w3{font-style:normal}
+    .nav-logo .w1,.nav-logo .w2,.nav-logo .w3{text-shadow:2px 2px 0 var(--sh)}
+    .nav-logo .w1{--sh:var(--cyan)}.nav-logo .w2{--sh:var(--violet-hi)}.nav-logo .w3{--sh:var(--orange)}
+    .hero-title{white-space:nowrap}
+    @media (min-width:901px){.hero-title{font-size:clamp(3rem,5.4vw,6.2rem);line-height:1}.hero-content{padding:130px 60px 60px 70px}.hero-desc{max-width:720px}}
+    @media (max-width:900px){.hero-title{white-space:normal}.hero-content{padding-bottom:70px}}
+    .btn-listen.al{background:#000;border-color:#000;box-shadow:5px 5px 0 var(--violet-hi);outline:2px solid #333}
   </style>
 </head>
 <body>
@@ -289,13 +288,13 @@
 <div id="cursor-ring"></div>
 
 <nav>
-  <a href="#/" class="nav-logo">Swing <span>Swing</span> Swing</a>
+  <a href="#/" class="nav-logo"><span class="w1">Swing</span> <span class="w2">Swing</span> <span class="w3">Swing</span></a>
   <ul class="nav-links">
     <li><a href="#/" data-route="accueil">Accueil</a></li>
-    <li><a href="#/groupe" data-route="groupe">Le Groupe</a></li>
+    <li><a href="#/groupe" data-route="groupe">Musiciens</a></li>
     <li><a href="#/prestation" data-route="prestation">Prestation</a></li>
     <li><a href="#/repertoire" data-route="repertoire">Répertoire</a></li>
-    <li><a href="#/reserver" data-route="reserver">Réservation</a></li>
+    <li><a href="#/reserver" data-route="reserver">Réserver</a></li>
     <li><a href="#/medias" data-route="medias">Médias</a></li>
   </ul>
 </nav>
@@ -322,7 +321,7 @@
   <div class="hero-line"></div>
   <div class="hero-content">
     <p class="hero-eyebrow">Musique — Jazz &amp; Rock &amp; Pop</p>
-    <h1 class="hero-title">Swing <em>Swing</em> Swing</h1>
+    <h1 class="hero-title"><span class="w1">Swing</span> <span class="w2">Swing</span> <span class="w3">Swing</span></h1>
     <p class="hero-title-sub">Le groupe</p>
     <p class="hero-desc">Fondé en octobre 2025 à Rigaud, Swing Swing Swing est un groupe indépendant regroupant 8 jeunes musiciens. Nous comptons la clarinette, le saxophone, la trompette, le trombone, la guitare, le piano, la basse et la batterie parmi notre instrumentation. Nous interprétons principalement de la musique jazz (blues et swing), rock et pop mais nous naviguons également dans d’autres styles musicaux.</p>
     <p class="hero-desc">Lauréats du prix Performance marquante à la finale régionale montérégienne de Secondaire en Spectacle 2026 et gagnants de la finale locale au Collège Bourget, nous sommes expérimentés en interprétation musicale et en prestations scéniques.</p>
@@ -346,11 +345,7 @@
       </svg>
     </div>
   </div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num"> </div><div class="stat-label"> </div></div>
-    <div class="stat"><div class="stat-num">8</div><div class="stat-label">Musiciens</div></div>
-    <div class="stat"><div class="stat-num"> </div><div class="stat-label"> </div></div>
-  </div>
+  
   <div class="galerie">
     <div class="section-header" style="margin-bottom:34px">
       <span class="section-tag">Galerie</span>
@@ -364,10 +359,12 @@
         <figure class="slide"><img src="https://i.ibb.co/Vc6LNS0t/unnamed-1.png" alt="Swing Swing Swing, photo 4" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentNode.classList.add('broken')" /></figure>
         <figure class="slide"><img src="https://i.ibb.co/B24Bwk58/unnamed-1.jpg" alt="Swing Swing Swing, photo 5" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentNode.classList.add('broken')" /></figure>
         <figure class="slide"><img src="https://i.ibb.co/kV7fs2BQ/swing.jpg" alt="Swing Swing Swing, photo 6" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentNode.classList.add('broken')" /></figure>
+        <figure class="slide"><img src="https://i.ibb.co/dwL2ph0K/IMG-1293.jpg" alt="Swing Swing Swing, photo 7" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentNode.classList.add('broken')" /></figure>
+        <figure class="slide"><img src="https://i.ibb.co/jZLV6XLb/IMG-1292-1.jpg" alt="Swing Swing Swing, photo 8" referrerpolicy="no-referrer" loading="lazy" onerror="this.parentNode.classList.add('broken')" /></figure>
       </div>
       <button class="car-btn prev" aria-label="Photo précédente">‹</button>
       <button class="car-btn next" aria-label="Photo suivante">›</button>
-      <div class="dots-nav"><button class="dot" aria-label="Photo 1"></button><button class="dot" aria-label="Photo 2"></button><button class="dot" aria-label="Photo 3"></button><button class="dot" aria-label="Photo 4"></button><button class="dot" aria-label="Photo 5"></button><button class="dot" aria-label="Photo 6"></button></div>
+      <div class="dots-nav"><button class="dot" aria-label="Photo 1"></button><button class="dot" aria-label="Photo 2"></button><button class="dot" aria-label="Photo 3"></button><button class="dot" aria-label="Photo 4"></button><button class="dot" aria-label="Photo 5"></button><button class="dot" aria-label="Photo 6"></button><button class="dot" aria-label="Photo 7"></button><button class="dot" aria-label="Photo 8"></button></div>
     </div>
   </div>
 </section>
@@ -487,7 +484,7 @@
     <div class="section-header">
       <span class="section-tag">Sur Scène</span>
       <h2 class="section-title">Notre <em>Prestation</em></h2>
-      <p class="section-subtitle">Revivez la magie d'un soir de concert — l'énergie, la précision, l'émotion.</p>
+      <p class="section-subtitle">Revivez la magie d'un soir de concert !</p>
     </div>
     <div class="prestation-inner">
       <div class="prestation-video-wrapper" style="position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(255,138,0,.18);overflow:hidden;background:#000;">
@@ -523,25 +520,45 @@
 <div class="track-card piece"><div><h3 class="piece-title">What a Wonderful World</h3><p class="piece-by">Arrangement : Rick Stitzel</p></div><a href="https://www.youtube.com/watch?v=tMXnJ7bT1Dg&list=PLBjcdjH30hYg&index=4" target="_blank" rel="noopener noreferrer" class="btn-listen yt"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg><span>Écouter sur YouTube</span></a></div>
 <div class="track-card piece"><div><h3 class="piece-title">Take On Me</h3><p class="piece-by">Arrangement : John Berry</p></div><a href="https://www.youtube.com/watch?v=wG1B5CFPz7Y&list=PLBjcdjH30hYg&index=1" target="_blank" rel="noopener noreferrer" class="btn-listen yt"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg><span>Écouter sur YouTube</span></a></div>
 <div class="track-card piece"><div><h3 class="piece-title">Extraits de thèmes diversifiés</h3><p class="piece-by">Yasmine Daoust</p></div><a href="https://musescore.com/user/120491750/scores/33954089" target="_blank" rel="noopener noreferrer" class="btn-listen ms"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9 3v11.1A3.5 3.5 0 1 0 11 17V8h6V3H9z"/></svg><span>Écouter sur Musescore</span></a></div>
+<div class="track-card piece"><div><h3 class="piece-title">(The) Birth of the Blues</h3><p class="piece-by">Arrangement : Mike Lewis</p></div><a href="https://www.alfred.com/products/the-birth-of-the-blues-00-jem02003" target="_blank" rel="noopener noreferrer" class="btn-listen al"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8 5v14l11-7z"/></svg><span>Écouter sur Alfred</span></a></div>
 </div>
     </div>
   </div>
 </section>
 
 <section id="reserver" class="page" data-route="reserver">
+  <div class="tickets-bg"></div>
   <div class="page-inner">
-    <div class="section-header">
-      <span class="section-tag">Nous joindre</span>
-      <h2 class="section-title">Réservation &amp; <em>Contact</em></h2>
-    </div>
-    <div class="resa-grid">
-      <p class="resa-text resa-tl">Réservez le groupe pour une prestation inoubliable!</p>
-      <a class="resa-forms" href="https://docs.google.com/forms/d/e/1FAIpQLSdqQ0rYJArwWT0sv8NZAltY2E8rbscqQ3afL2v3OQPGiz3pvA/viewform" onclick="openFormModal('https://docs.google.com/forms/d/e/1FAIpQLSdqQ0rYJArwWT0sv8NZAltY2E8rbscqQ3afL2v3OQPGiz3pvA/viewform?embedded=true'); return false;" aria-label="Formulaire de réservation Google Forms">
-        <span class="resa-logo"><svg viewBox="0 0 48 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 0h25l17 17v41a6 6 0 0 1-6 6H6a6 6 0 0 1-6-6V6a6 6 0 0 1 6-6z" fill="#7248B9"/><path d="M31 0l17 17H35a4 4 0 0 1-4-4z" fill="#B79BE3"/><circle cx="12" cy="32" r="3" fill="#fff"/><rect x="19" y="29.5" width="19" height="5" rx="2.5" fill="#fff"/><circle cx="12" cy="44" r="3" fill="#fff"/><rect x="19" y="41.5" width="19" height="5" rx="2.5" fill="#fff"/></svg></span>
-        <span>Formulaire</span>
-      </a>
-      <a class="resa-mail" href="mailto:swingswingswing.jazzband@gmail.com">swingswingswing.jazzband@gmail.com</a>
-      <p class="resa-text resa-br">Contactez-nous par courriel.</p>
+    <div class="section-divider"><span class="section-divider-icon">◆</span></div>
+    <div class="tickets-layout">
+      <div class="tickets-info">
+        <div class="tickets-badge">Réservation</div>
+        <h2 class="tickets-heading">Réservez le <em>groupe</em></h2>
+        <p class="tickets-desc">Vivez l'expérience Swing Swing Swing sur scène. Mariage, gala, soirée privée ou festival : écrivez-nous, on s'occupe du reste. Voici nos prochains rendez-vous.</p>
+        <ul class="show-list">
+          <li class="show-item"><div class="show-date"><div class="show-date-day">???</div><div class="show-date-month">Juin</div></div><div class="show-details"><div class="show-venue">Spectacle non déterminé</div><div class="show-city">Rigaud, QC · 20h00</div></div><div class="show-dot"></div></li>
+          <li class="show-item"><div class="show-date"><div class="show-date-day">???</div><div class="show-date-month">Juin</div></div><div class="show-details"><div class="show-venue">Spectacle non déterminé</div><div class="show-city">Coteau-du-lac, QC · 21h30</div></div><div class="show-dot"></div></li>
+          <li class="show-item"><div class="show-date"><div class="show-date-day">???</div><div class="show-date-month">Juillet</div></div><div class="show-details"><div class="show-venue">Spectacle non déterminé</div><div class="show-city">Vaudreuil, QC · 20h30</div></div><div class="show-dot" style="animation-delay:.5s"></div></li>
+        </ul>
+      </div>
+      <div>
+        <div class="reserv-box">
+          <div class="reserv-divider">
+            <span class="reserv-divider-icon">◆</span>
+          </div>
+          <div class="reserv-icon">
+            <svg viewBox="0 0 24 24" width="26" height="26" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+              <path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/>
+            </svg>
+          </div>
+          <p class="reserv-title">Réserver le groupe</p>
+          <p class="reserv-subtitle">Vous souhaitez nous avoir lors de votre événement ? Votre mariage, gala, soirée privée ou festival ? Contactez-nous via le formulaire.</p>
+         <a href="#" class="btn-reserv" onclick="openFormModal('https://docs.google.com/forms/d/e/1FAIpQLSdqQ0rYJArwWT0sv8NZAltY2E8rbscqQ3afL2v3OQPGiz3pvA/viewform?embedded=true'); return false;">
+  <span>Faire une demande</span>
+</a>
+          <p class="stripe-note">Formulaire de contact · Réponse sous 48h</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -571,7 +588,7 @@
 <footer>
   <div class="footer-logo">Swing <span>Swing</span> Swing</div>
  <p class="footer-copy">© 2026 Swing Swing Swing — Tous droits réservés - Fait par <a href="https://cool-firefly-371c.lpsauve2.workers.dev/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Louis-Philippe Sauvé</a> avec l'étroite collaboration d'Henri Turgeon</p>
-  <ul class="footer-links"><li><a href="mailto:swingswingswing.jazzband@gmail.com">Contact</a></li></ul>
+  <ul class="footer-links"><li><a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCKCJDpcMpbjFtrMqVzhrLbZxqjfHrBhTHsclpdMwkxpVwhRtrnDsctStDjHMhjsKWFLKbBB">Contact</a></li></ul>
 </footer>
   <!-- MODALE FORMULAIRE GOOGLE FORMS -->
 <div class="form-modal-overlay" id="formModal">
@@ -623,7 +640,7 @@ document.getElementById('formModal').addEventListener('click', (e) => {
   });
 
   // ─── PAGES INDEXÉES + TRANSITIONS ───
-  const ROUTES = { accueil: 'Accueil', groupe: 'Le Groupe', prestation: 'Prestation', repertoire: 'Répertoire', reserver: 'Réservation & Contact', medias: 'Médias' };
+  const ROUTES = { accueil: 'Accueil', groupe: 'Misiciens', prestation: 'Prestation', repertoire: 'Répertoire', reserver: 'Réserver', medias: 'Médias' };
   const ALIAS = { 'médias': 'medias', media: 'medias',  'réserver': 'reserver', reservation: 'reserver', billetterie: 'reserver', membres: 'groupe', 'répertoire': 'repertoire', sondage: 'accueil' };
   const pages = document.querySelectorAll('.page');
   const navLinks = document.querySelectorAll('.nav-links a');
